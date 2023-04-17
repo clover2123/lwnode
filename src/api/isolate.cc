@@ -830,6 +830,7 @@ void IsolateWrap::SetPromiseRejectCallback(v8::PromiseRejectCallback callback) {
                Escargot::PromiseObjectRef* promise,
                Escargot::ValueRef* value,
                Escargot::VMInstanceRef::PromiseRejectEvent event) {
+    StackOverflowDisabler disabler(state);
     IsolateWrap::GetCurrent()->ReportPromiseReject(promise, value, event);
   };
 
